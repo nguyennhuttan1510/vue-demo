@@ -1,0 +1,33 @@
+:root{
+    --secondary-background:#aaf7f9;
+    --radius-sm: 8px;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body, #app {
+    height: 100%;
+}
+
+.button {
+    padding: 0.5rem 1rem;
+    background-image: linear-gradient(to bottom right, #24fff5, #4141f9d9);
+    cursor: pointer;
+    max-width: 100%;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    margin: auto;
+    transition: 0.4s;
+    // &.hovered {
+    //     &:hover {
+    //         color: black;
+    //         background-image: linear-gradient(#51aaff, #51aaff);
+    //       }
+    // }
+  }

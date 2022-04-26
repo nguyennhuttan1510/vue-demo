@@ -1,25 +1,33 @@
 <template lang="html">
-  <div class="px-6">
-    <HeaderMain />
-    <div class="mb-10">
-      <ProductManagement />
-    </div>
-  </div>
+  <MainLayout>
+    <ProductManagement />
+  </MainLayout>
 </template>
-<script>
-  import HeaderMain from "../layouts/Header-Main";
-  import ProductManagement from "../components/ProductManagement";
-  export default {
-    data() {
-      return {};
-    },
-    components: {
-      HeaderMain,
-      ProductManagement,
-    },
-    created() {
 
+<script>
+import { mapState } from "vuex";
+// import HeaderMain from "../layouts/Header-Main";
+import MainLayout from "../layouts/MainLayout";
+import ProductManagement from "../components/ProductManagement";
+export default {
+  data() {
+    return {
+      isShowSidebar: true,
+    };
+  },
+  components: {
+    // HeaderMain,
+    ProductManagement,
+    MainLayout,
+  },
+  methods: {
+    handleClick() {
+      this.isShowSidebar = !this.isShowSidebar;
     },
-  };
+  },
+  computed: {
+    ...mapState["account"],
+  },
+};
 </script>
 <style lang="scss"></style>

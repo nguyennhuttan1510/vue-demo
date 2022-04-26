@@ -8,11 +8,8 @@ const loginAPI = async (payload) => {
       `/api/auth/login?email=${payload.email}&password=${payload.password}`
     );
     console.log("🚀 ~ file: auth.js ~ line 10 ~ loginAPI ~ res", res);
-    if (res.success) {
-      return res;
-    } else {
-      throw new Error(res.result);
-    }
+
+    return res;
   } catch (error) {
     console.log("🚀 ~ file: auth.js ~ line 12 ~ loginAPI ~ error", error);
   }

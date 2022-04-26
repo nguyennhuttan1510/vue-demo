@@ -41,10 +41,6 @@ export default {
         return this.selected;
       },
       set(value) {
-        console.log(
-          "🚀 ~ file: index.vue ~ line 46 ~ set ~ this.selected",
-          this.selected
-        );
         const payload = {
           productID: this.productItem.id,
           sales_status: value,

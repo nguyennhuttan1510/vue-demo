@@ -30,7 +30,7 @@
 </template>
 <script>
 // eslint-disable-next-line no-unused-vars
-import { mapActions, mapState, mapGetters, mapMutations } from "vuex";
+import { mapActions, mapState } from "vuex";
 import FilterComponent from "./components/FilterComponent";
 import ListProductComponent from "./components/ListProductComponent";
 import { OPTION_PRODUCT_TYPE, OPTION_PRODUCT_STATUS } from "../../constants";
@@ -115,21 +115,12 @@ export default {
         key: key,
         name: OPTION_PRODUCT_STATUS[key],
       }));
-      console.log("🚀 ~ file: index.vue ~ line 170 ~ result ~ result", result);
       return [{ key: -1, name: "All" }, ...result];
     },
   },
   methods: {
-    //WILL REMOVE
-    ...mapActions([
-      "getBrands",
-      "getProducts",
-      "getModels",
-      "getModelDetail",
-      "getUsers",
-      "getCities",
-    ]),
-    ...mapMutations(["setInitTrim", "setTrim"]),
+    ...mapActions(["getBrands", "getProducts", "getUsers", "getCities"]),
+
     onHandleChangePage(currentPage) {
       if (!currentPage) return;
       this.currentPage = currentPage;

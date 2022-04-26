@@ -23,7 +23,6 @@ a{
     color: black !important;
     text-decoration: none !important;
 }
-
 .button {
     padding: 0.5rem 1rem;
     background-image: linear-gradient(to bottom right, #24fff5, #4141f9d9);
@@ -36,10 +35,4 @@ a{
     font-weight: bold;
     margin: auto;
     transition: 0.4s;
-    // &.hovered {
-    //     &:hover {
-    //         color: black;
-    //         background-image: linear-gradient(#51aaff, #51aaff);
-    //       }
-    // }
   }

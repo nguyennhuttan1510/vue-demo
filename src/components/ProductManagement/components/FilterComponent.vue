@@ -69,8 +69,18 @@
         v-model="filterQuery.status_latest_user"
       />
       <div>
-        <div class="mb-2">this is title</div>
-        <input class="search" type="text" v-model="q" />
+        <div class="mb-2 font-bold">Search</div>
+        <input
+          class="search"
+          type="text"
+          :value="filterQuery.q"
+          @keypress.enter.prevent="
+            (e) => {
+              changeKeySearch(e.target.value);
+            }
+          "
+          placeholder="Search here"
+        />
       </div>
     </div>
   </div>
@@ -153,6 +163,9 @@ export default {
     setValues(params) {
       this.filterQuery = { ...this.filterQuery, ...params };
     },
+    changeKeySearch(value) {
+      this.filterQuery.q = value;
+    },
     dropdownShouldOpen(VueSelect) {
       if (this.country !== null) {
         return VueSelect.open;
@@ -167,8 +180,9 @@ export default {
 </script>
 <style scoped lang="scss">
 .search {
-  height: 47%;
+  height: 49%;
   padding: 0 1rem;
   border: thin solid rgba(60, 60, 60, 0.26);
+  border-radius: 4px;
 }
 </style>

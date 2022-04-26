@@ -2,7 +2,7 @@
   <header class="header flex justify-between items-center h-20 pr-6 fixed z-10">
     <div class="header_icon flex items-center">
       <span
-        class="icon_menu material-icons p-4 mr-6"
+        class="icon_menu material-icons p-4 mr-6 cursor-pointer"
         @click="
           () => {
             this.$emit('handleClick');

@@ -19,10 +19,6 @@ export default {
   },
   watch: {
     date(newState, oldState) {
-      console.log(
-        "🚀 ~ file: Datepicked.vue ~ line 22 ~ date ~ newState",
-        newState
-      );
       if (newState !== oldState) {
         if (newState === null) {
           this.$emit("changeDataPicked", {

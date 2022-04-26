@@ -6,7 +6,6 @@
 
 <script>
 import { mapState } from "vuex";
-// import HeaderMain from "../layouts/Header-Main";
 import MainLayout from "../layouts/MainLayout";
 import ProductManagement from "../components/ProductManagement";
 export default {
@@ -16,7 +15,6 @@ export default {
     };
   },
   components: {
-    // HeaderMain,
     ProductManagement,
     MainLayout,
   },

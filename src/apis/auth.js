@@ -7,7 +7,6 @@ const loginAPI = async (payload) => {
     const res = await HTTP.post(
       `/api/auth/login?email=${payload.email}&password=${payload.password}`
     );
-    console.log("🚀 ~ file: auth.js ~ line 10 ~ loginAPI ~ res", res);
 
     return res;
   } catch (error) {

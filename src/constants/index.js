@@ -12,7 +12,6 @@ export const OPTION_PRODUCT_TYPE = [
 ];
 
 export const OPTION_PRODUCT_STATUS = {
-  // all: "All",
   ing: "On Selling",
   "in review": "In Review",
   blocked: "Blocked",

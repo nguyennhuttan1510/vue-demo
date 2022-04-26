@@ -125,10 +125,8 @@
   </div>
 </template>
 <script>
-// const res = await Auth.loginAPI(payload);
 import { STATUS_LOGIN } from "../constants";
 import { mapMutations } from "vuex";
-// eslint-disable-next-line no-unused-vars
 import { Auth } from "../apis/auth.js";
 import { HTTP } from "../services/https";
 export default {
@@ -191,12 +189,6 @@ export default {
         password: this.password,
       };
       const res = await Auth.loginAPI(payload);
-      console.log("🚀 ~ file: Login.vue ~ line 194 ~ handleSignin ~ res", res);
-      // const condition = true;
-      console.log(
-        "🚀 ~ file: Login.vue ~ line 196 ~ handleSignin ~ res.success",
-        res?.success
-      );
       if (res?.success) {
         this.setAccount(res.data.user);
         this.toaster("Login successfully", "success");
@@ -233,7 +225,6 @@ export default {
   .form_login {
     box-shadow: 0px 0px 20px 1px rgb(0 0 0 / 30%);
     backdrop-filter: blur(15px);
-    // background-color: var(--secondary-background);
     border-radius: 8px;
     transition: all 0.4s;
     .logo {

@@ -119,7 +119,12 @@
           <div v-else-if="header.key === 'sales_status'" class="text-center">
             <SelectComponent
               v-if="item[header.key] === 'ing'"
-              :options="[option['in review'], option['blocked'], option['ing']]"
+              :options="[
+                { key: -1, name: 'All' },
+                { key: 'ing', name: 'On Selling' },
+                { key: 'in review', name: 'In Review' },
+                { key: 'blocked', name: 'Blocked' },
+              ]"
               :isStatePrivate="true"
               :selected="item[header.key]"
               :productItem="item"
@@ -154,12 +159,11 @@ import {
 } from "../../../constants/formatData.js";
 import SelectComponent from "../../SelectComponent";
 import Paginate from "../../Pagination";
-// import { ProductAPI } from "@/apis/products.js";
 
 export default {
   name: "ListProductComponent",
   emits: ["onHandleChangePage"],
-  props: ["listProduct", "totalItem", "productStatusOption"],
+  props: ["listProduct", "totalItem"],
   components: {
     Paginate,
     SelectComponent,
@@ -191,16 +195,23 @@ export default {
     option() {
       return OPTION_PRODUCT_STATUS;
     },
+    productStatusOption() {
+      const needOption = ["in review", "blocked", "ing"];
+      let arrayKey = Object.keys(OPTION_PRODUCT_STATUS);
+      const result = arrayKey
+        .filter((e) => needOption.includes(e))
+        .map((key) => ({
+          key: key,
+          name: OPTION_PRODUCT_STATUS[key],
+        }));
+      return [{ key: -1, name: "All" }, ...result];
+    },
   },
   methods: {
     ...mapActions(["updateStatusProduct"]),
     formatCurrency,
     formatFullDate,
     async handleChangeStatusProduct(params) {
-      console.log(
-        "🚀 ~ file: ListProductComponent.vue ~ line 200 ~ handleChangeStatusProduct ~ status",
-        params
-      );
       this.updateStatusProduct(params);
     },
     onHandleChangePage(pageNum) {

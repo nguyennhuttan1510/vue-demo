@@ -79,23 +79,14 @@ export default createStore({
       commit("setModels", res.data);
     },
     async getProducts({ commit }, params) {
-      console.log(
-        "🚀 ~ file: index.js ~ line 58 ~ getProducts ~ params",
-        params
-      );
       let newParams = {};
       for (const param in params) {
         if (params[param] && params[param] !== -1) {
           newParams[param] = params[param];
         }
       }
-      console.log(
-        "🚀 ~ file: index.js ~ line 59 ~ getProducts ~ newParams",
-        newParams
-      );
       const query = {
         ...newParams,
-        // page: this.currentPage,
         sort_by: "updated_at",
         order_by: "desc",
         count: 20,
@@ -117,16 +108,10 @@ export default createStore({
     },
     async getCities({ commit }) {
       const res = await LocationAPI.getCity();
-      console.log("🚀 ~ file: index.js ~ line 109 ~ getCities ~ res", res);
       if (!res?.result_code) return;
       commit("setCities", res.data);
     },
     async updateStatusProduct({ commit }, params) {
-      console.log(
-        "🚀 ~ file: ListProductComponent.vue ~ line 200 ~ handleChangeStatusProduct ~ status",
-        params
-      );
-
       const payload = {
         productID: params.productID,
         sales_status: params.sales_status,

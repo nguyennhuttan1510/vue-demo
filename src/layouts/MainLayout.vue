@@ -1,5 +1,5 @@
 <template>
-  <div class="h-fit flex">
+  <div class="flex h-full">
     <div class="w-80 block sidebar" :class="{ active: isShowSidebar }">
       <div class="flex flex-col">
         <div class="flex flex-col h-60 justify-center items-center bg-gray-500">
@@ -9,12 +9,26 @@
         </div>
         <div class="flex flex-col">
           <div class="pl-6 font-bold text-lg py-4 item-nav">
-            <router-link :to="{ name: 'dashboard' }">
+            <router-link
+              :to="{
+                path: PATHNAME.DASHBOARD,
+                params: {
+                  title: 'Dashboard',
+                },
+              }"
+            >
               <span class="block">Dashboard</span>
             </router-link>
           </div>
           <div class="pl-6 font-bold text-lg py-4 item-nav">
-            <router-link :to="{ name: 'admin' }">
+            <router-link
+              :to="{
+                path: PATHNAME.PRODUCT,
+                params: {
+                  title: 'Product Management',
+                },
+              }"
+            >
               <span class="block">Products</span>
             </router-link>
           </div>
@@ -26,18 +40,20 @@
         :class="{ active: isShowSidebar }"
         @handleClick="handleClick"
       />
-      <div class="h-fit">
+      <div class="h-full">
         <slot></slot>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { PATHNAME } from "@/constants";
 import HeaderMain from "./Header-Main.vue";
 export default {
   name: "Main-Layout",
   data() {
     return {
+      PATHNAME: PATHNAME,
       isShowSidebar: true,
     };
   },
@@ -60,7 +76,7 @@ export default {
     transition: all 0.4s;
   }
   &:hover {
-    background-color: #c9fff6;
+    background-color: aquamarine;
     span {
       transform: translateX(2rem);
     }

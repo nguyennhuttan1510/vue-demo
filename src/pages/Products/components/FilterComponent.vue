@@ -7,6 +7,15 @@
         :keyParams="{ start: 'start_date', end: 'end_date' }"
         @changeDataPicked="setValues"
       />
+      <DatepickerComponent
+        style="min-width: 345px"
+        title="Status Update At"
+        @changeDataPicked="setValues"
+        :keyParams="{
+          start: 'status_latest_datetime_from',
+          end: 'status_latest_datetime_to',
+        }"
+      />
       <SelectComponent
         :reduce="(options) => options.id"
         :options="brandsOption"
@@ -53,15 +62,7 @@
         title="Product Status"
         v-model="filterQuery.sales_status"
       />
-      <DatepickerComponent
-        style="min-width: 345px"
-        title="Status Update At"
-        @changeDataPicked="setValues"
-        :keyParams="{
-          start: 'status_latest_datetime_from',
-          end: 'status_latest_datetime_to',
-        }"
-      />
+
       <SelectComponent
         :reduce="(options) => options.id"
         :options="this.createdByOption"
@@ -87,7 +88,7 @@
 </template>
 <script>
 import "vue-select/dist/vue-select.css";
-import SelectComponent from "../../../components/SelectComponent";
+import SelectComponent from "@/components/SelectComponent";
 import DatepickerComponent from "@/components/Datepicked/Datepicked.vue";
 import { mapActions, mapState, mapMutations } from "vuex";
 

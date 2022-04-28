@@ -8,6 +8,7 @@ import { LocationAPI } from "./../apis/location";
 const initState = {
   account: {},
   products: {
+    loading: true,
     totalPage: 0,
     productList: [],
   },
@@ -26,6 +27,9 @@ export default createStore({
     },
   },
   mutations: {
+    setLoading(state, payload) {
+      state.products.loading = payload;
+    },
     setBrands(state, payload) {
       if (!payload?.length) return;
       state.brands = [...payload];
@@ -36,7 +40,6 @@ export default createStore({
     },
 
     setProducts(state, payload) {
-      if (!payload?.data.length) return;
       state.products.productList = [...payload.data];
       state.products.totalPage = payload?.total || 0;
     },
@@ -92,7 +95,10 @@ export default createStore({
         count: 20,
       };
       const stringified = queryString.stringify(query);
+      commit("setLoading", true);
       const res = await ProductAPI.getProducts(stringified);
+      commit("setLoading", false);
+
       if (!res?.result_code) return;
       commit("setProducts", res);
     },

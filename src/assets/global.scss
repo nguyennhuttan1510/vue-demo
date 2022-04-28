@@ -8,12 +8,16 @@
     margin: 0;
     padding: 0;
 }
+#app{
+    width: 100vw;
+}
 input:focus-visible {
     outline: 0;
 }
 
 html,body, #app {
     height: 100%;
+
 }
 .vs__selected-options {
     flex-wrap: nowrap !important;

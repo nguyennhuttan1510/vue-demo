@@ -1,23 +1,24 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Login from "../pages/Login.vue";
 import { checkAuth } from "./common";
-import Admin from "@/pages/Admin-Dashboard";
-import Dashboard from "@/pages/Dashboard.vue";
+import Login from "@/pages/Login";
+import Products from "@/pages/Products";
+import Dashboard from "@/pages/Dashboard";
+import { PATHNAME } from "@/constants";
 const routes = [
   {
-    path: "/",
+    path: PATHNAME.LOGIN,
     name: "login",
     component: Login,
   },
   {
-    path: "/dashboard",
+    path: PATHNAME.DASHBOARD,
     name: "dashboard",
     component: Dashboard,
   },
   {
-    path: "/admin",
-    name: "admin",
-    component: Admin,
+    path: PATHNAME.PRODUCT,
+    name: "products",
+    component: Products,
     beforeEnter: (to, from, next) => {
       checkAuth(to, from, next);
     },

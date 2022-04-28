@@ -1,38 +1,43 @@
 <template lang="html">
-  <div class="wrap-product-management p-6 pt-24 h-full">
-    <div class="p-6 bg-gray-50 w-full">
-      <div class="flex justify-between">
-        <div class="mb-6 font-semibold text-2xl">Product Management</div>
-        <div class="font-semibold">
-          About
-          <span class="text-xl text-green-600"> {{ products.totalPage }}</span>
-          result
+  <MainLayout>
+    <div class="wrap-product-management p-6 pt-24 min-h-full">
+      <div class="p-6 bg-gray-50 w-full min-h-full">
+        <div class="flex justify-between">
+          <div class="mb-6 font-semibold text-2xl">Product Management</div>
+          <div class="font-semibold">
+            About
+            <span class="text-xl text-green-600">
+              {{ products.totalPage }}</span
+            >
+            result
+          </div>
         </div>
+        <FilterComponent
+          :filterQuery="filterQuery"
+          @onFilterProduct="onFilterProduct"
+          :brandsOption="brandsOption"
+          :modelsOption="modelsOption"
+          :trimOption="trimOption"
+          :productTypeOption="productTypeOption"
+          :locationOption="locationOption"
+          :createdByOption="createdByOption"
+          :productStatusOption="productStatusOption"
+        />
+        <ListProductComponent
+          :listProduct="products.productList"
+          :totalItem="products.totalPage"
+          @onHandleChangePage="onHandleChangePage"
+        />
       </div>
-      <FilterComponent
-        :filterQuery="filterQuery"
-        @onFilterProduct="onFilterProduct"
-        :brandsOption="brandsOption"
-        :modelsOption="modelsOption"
-        :trimOption="trimOption"
-        :productTypeOption="productTypeOption"
-        :locationOption="locationOption"
-        :createdByOption="createdByOption"
-        :productStatusOption="productStatusOption"
-      />
-      <ListProductComponent
-        :listProduct="products.productList"
-        :totalItem="products.totalPage"
-        @onHandleChangePage="onHandleChangePage"
-      />
     </div>
-  </div>
+  </MainLayout>
 </template>
 <script>
 // eslint-disable-next-line no-unused-vars
 import { mapActions, mapState } from "vuex";
 import FilterComponent from "./components/FilterComponent";
 import ListProductComponent from "./components/ListProductComponent";
+import MainLayout from "@/layouts/MainLayout.vue";
 import { OPTION_PRODUCT_TYPE, OPTION_PRODUCT_STATUS } from "../../constants";
 
 export default {
@@ -40,6 +45,7 @@ export default {
   components: {
     FilterComponent,
     ListProductComponent,
+    MainLayout,
   },
   data() {
     return {

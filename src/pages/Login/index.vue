@@ -64,11 +64,7 @@
         </div>
       </div>
       -->
-        <img
-          alt="Vue logo"
-          src="../assets/images/logo0.png"
-          class="logo mb-3"
-        />
+        <img alt="Vue logo" src="@/assets/images/logo0.png" class="logo mb-3" />
         <div class="form_title text-2xl font-bold mb-6">Login</div>
         <div class="wrap_input mb-7">
           <label for="username"></label>
@@ -125,10 +121,10 @@
   </div>
 </template>
 <script>
-import { STATUS_LOGIN } from "../constants";
+import { PATHNAME, STATUS_LOGIN } from "@/constants";
 import { mapMutations } from "vuex";
-import { Auth } from "../apis/auth.js";
-import { HTTP } from "../services/https";
+import { Auth } from "@/apis/auth.js";
+import { HTTP } from "@/services/https";
 export default {
   name: "Login-page",
   data() {
@@ -195,7 +191,7 @@ export default {
         const token = `${res?.data.token_type} ${res?.data.access_token}`;
         HTTP.defaults.headers.common["Authorization"] = token;
         localStorage.setItem("token", token);
-        this.$router.push("/admin");
+        this.$router.push(PATHNAME.PRODUCT);
       } else {
         this.toaster(res?.result, "danger");
       }

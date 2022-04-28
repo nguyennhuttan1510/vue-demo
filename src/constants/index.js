@@ -20,3 +20,14 @@ export const OPTION_PRODUCT_STATUS = {
   pending: "In Transaction",
   locked: "Locked",
 };
+
+export const PATHNAME = {
+  LOGIN: "/",
+  PRODUCT: "/products",
+  DASHBOARD: "/dashboard",
+  PRODUCT_DETAIL: (id) => {
+    if (id === false) return "products/:id";
+    if (isNaN(id)) return "products/";
+    return `products/${id}`;
+  },
+};
